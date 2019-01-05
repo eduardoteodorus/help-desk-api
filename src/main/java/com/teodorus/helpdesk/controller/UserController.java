@@ -49,6 +49,7 @@ public class UserController {
 			}
 			
 			user.setPassword(encoder.encode(user.getPassword()));
+			user.setId(null);
 			User newUser = service.createOrUpdate(user);
 			response.setData(newUser);
 			

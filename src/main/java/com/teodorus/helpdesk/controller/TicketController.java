@@ -162,7 +162,7 @@ public class TicketController {
 		Page<Ticket> tickets = null;
 		User user = getUserFromRequest(request);
 		
-		if (ProfileEnum.ROLE_TECHICIAN.equals(user.getProfile())) {
+		if (ProfileEnum.ROLE_TECHNICIAN.equals(user.getProfile())) {
 			tickets = service.listTicket(page, size);
 		} else {
 			tickets = service.findByCurrentUser(page, size, user.getId());
@@ -195,7 +195,7 @@ public class TicketController {
 		if (number > 0) {
 			tickets = service.findByNumber(page, size, number);
 		} else {
-			if (ProfileEnum.ROLE_TECHICIAN.equals(user.getProfile())) {
+			if (ProfileEnum.ROLE_TECHNICIAN.equals(user.getProfile())) {
 				if (assigned) {
 					tickets = service.findByParametersAndAssignedUser(page, size, title, status, priority, user.getId());
 				} else {
