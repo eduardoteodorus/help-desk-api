@@ -52,12 +52,12 @@ public class TicketService {
 	
 	public Page<Ticket> findByParameters(int page, int size, String title, String status, String priority) {
 		Pageable pages = PageRequest.of(page, size);
-		return ticketRepository.findByTitleIgnoreCaseContainingAndStatusAndPriorityOrderByDateDesc(pages, title, status, priority);
+		return ticketRepository.findByTitleIgnoreCaseContainingAndStatusContainingAndPriorityContainingOrderByDateDesc(pages, title, status, priority);
 	}
 	
 	public Page<Ticket> findByParameters(int page, int size, String title, String status, String priority, String userId) {
 		Pageable pages = PageRequest.of(page, size);
-		return ticketRepository.findByTitleIgnoreCaseContainingAndStatusAndPriorityAndUserIdOrderByDateDesc(pages, title, status, priority, userId);
+		return ticketRepository.findByTitleIgnoreCaseContainingAndStatusContainingAndPriorityContainingAndUserIdOrderByDateDesc(pages, title, status, priority, userId);
 	}
 	
 	public Page<Ticket> findByNumber(int page, int size, Integer number) {
@@ -71,7 +71,7 @@ public class TicketService {
 	
 	public Page<Ticket> findByParametersAndAssignedUser(int page, int size, String title, String status, String priority, String assignedUser) {
 		Pageable pages = PageRequest.of(page, size);
-		return ticketRepository.findByTitleIgnoreCaseContainingAndStatusAndPriorityAndAssignedUserIdOrderByDateDesc(pages, title, status, priority, assignedUser);
+		return ticketRepository.findByTitleIgnoreCaseContainingAndStatusContainingAndPriorityContainingAndAssignedUserIdOrderByDateDesc(pages, title, status, priority, assignedUser);
 	}
 
 }

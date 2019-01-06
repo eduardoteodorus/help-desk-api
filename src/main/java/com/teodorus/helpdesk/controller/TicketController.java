@@ -89,7 +89,7 @@ public class TicketController {
 		Response<Ticket> response = new Response<Ticket>();
 		
 		try {
-			validateCreateTicket(ticket, result);
+			validateUpdateTicket(ticket, result);
 			if (result.hasErrors()) {
 				result.getAllErrors().forEach(error -> response.getErrors().add(error.getDefaultMessage()));
 				return ResponseEntity.badRequest().body(response);
@@ -216,6 +216,7 @@ public class TicketController {
 	public ResponseEntity<Response<Ticket>> changeStatus(HttpServletRequest request, 
 			@PathVariable("id") String id, 
 			@PathVariable("status") String status,
+			@RequestBody Ticket ticket,
 			BindingResult result) {
 		
 		Response<Ticket> response = new Response<Ticket>();
